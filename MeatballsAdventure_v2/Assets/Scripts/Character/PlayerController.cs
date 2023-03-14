@@ -77,12 +77,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void InteractNPC() {
-        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        var interactPos = transform.position + facingDir;
+        //var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        //var interactPos = transform.position + facingDir;
 
-        //Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
+        var collider = Physics2D.OverlapCircle(transform.position, 0.3f, interactableLayer);
         if (collider != null) {
             collider.GetComponent<Interactable>()?.InteractNPC();
         }
