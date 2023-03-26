@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour {
 
     public LayerMask interactableLayer;
+
+    //public event Action OnBattle;
 
     public float moveSpeed = 1f;
 
@@ -28,14 +31,16 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update() {
+    public void HandleUpdate() {
         if (movementInput != Vector2.zero) {
             bool success = TryMove(movementInput);
 
+            // Attempt to move horizontally.
             if (!success) {
                 success = TryMove(new Vector2(movementInput.x, 0));   
             }
 
+            // Attempt to move vertically.
             if (!success) {
                 success = TryMove(new Vector2(0, movementInput.y));
             }
@@ -47,12 +52,14 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isMoving", false);
         }
 
+        // Used for NPC interaction.
         if (Input.GetKeyDown(KeyCode.E)) {
             InteractNPC();
             Debug.Log("Pressed E");
         }
     }
     
+    // Attempt to move in given direction.
     private bool TryMove(Vector2 direction) {
         if (direction != Vector2.zero) {
             int count = rb.Cast(
@@ -73,17 +80,22 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    // Currently unused function.
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     }
 
+    // Handles NPC interactions.
     void InteractNPC() {
         var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
 
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
+
+        // Checks if there is actually an NPC next to character.
         if (collider != null) {
             collider.GetComponent<Interactable>()?.InteractNPC();
+            //OnBattle();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
+
+	public event Action<bool> OnBattleOver;
 
 	public GameObject playerPrefab;
 	public GameObject enemyPrefab;
@@ -26,7 +29,7 @@ public class BattleSystem : MonoBehaviour
 	public BattleState state;
 
     // Start is called before the first frame update
-    void Start()
+    public void StartBattle()
     {
 		state = BattleState.START;
 		StartCoroutine(SetupBattle());
@@ -47,7 +50,6 @@ public class BattleSystem : MonoBehaviour
 
 		yield return new WaitForSeconds(2f);
 
-		state = BattleState.PLAYERTURN;
 		PlayerTurn();
 	}
 
@@ -105,12 +107,12 @@ public class BattleSystem : MonoBehaviour
 			dialogueText.text = "You were defeated.";
 		}
 
-		// Switch to FreeRoam scene.
-		SceneManager.LoadScene("CC_L_Pond");
+		OnBattleOver(true);
 	}
 
 	void PlayerTurn()
 	{
+		state = BattleState.PLAYERTURN;
 		dialogueText.text = "Choose an action:";
 	}
 
