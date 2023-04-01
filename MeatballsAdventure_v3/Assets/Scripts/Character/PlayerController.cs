@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour {
 
     public LayerMask interactableLayer;
 
-    //public event Action OnBattle;
-
     public float moveSpeed = 1f;
 
     private bool isMoving;
@@ -54,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 
         // Used for NPC interaction.
         if (Input.GetKeyDown(KeyCode.E)) {
-            InteractNPC();
+            Interact();
             Debug.Log("Pressed E");
         }
     }
@@ -86,7 +84,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Handles NPC interactions.
-    void InteractNPC() {
+    void Interact() {
         var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
 
@@ -94,8 +92,14 @@ public class PlayerController : MonoBehaviour {
 
         // Checks if there is actually an NPC next to character.
         if (collider != null) {
-            collider.GetComponent<Interactable>()?.InteractNPC();
-            //OnBattle();
+            animator.SetBool("isMoving", false);
+
+            if (collider.tag == "NPC")
+                collider.GetComponent<Interactable>()?.InteractNPC();
+            
+            if (collider.tag == "Door") {
+                collider.GetComponent<Interactable>()?.InteractDoor();
+            }
         }
     }
 }

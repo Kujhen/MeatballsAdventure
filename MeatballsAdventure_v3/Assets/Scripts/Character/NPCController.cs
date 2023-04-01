@@ -17,4 +17,7 @@ public class NPCController : MonoBehaviour, Interactable {
         Debug.Log("Interacting with NPC");
         //StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
     }
+    public void InteractDoor() {
+        // Do nothing
+    }
 }
