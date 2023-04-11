@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
 
     private void Start() {
         npcController.OnBattle += StartBattle;
+        playerController.OnBattle += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
 
         // DialogManager.Instance.OnShowDialog += () => {

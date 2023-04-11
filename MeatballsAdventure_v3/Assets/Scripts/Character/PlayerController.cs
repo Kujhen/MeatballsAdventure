@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
 
+    public LayerMask grassLayer;
     public LayerMask interactableLayer;
 
-    //public event Action OnBattle;
+    public event Action OnBattle;
 
     public float moveSpeed = 1f;
 
@@ -52,9 +53,11 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isMoving", false);
         }
 
+        CheckForEncounters();
+
         // Used for NPC interaction.
         if (Input.GetKeyDown(KeyCode.E)) {
-            InteractNPC();
+            Interact();
             Debug.Log("Pressed E");
         }
     }
@@ -86,16 +89,35 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Handles NPC interactions.
-    void InteractNPC() {
+    void Interact() {
         var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
 
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
 
-        // Checks if there is actually an NPC next to character.
+        // Checks if there is a collision object next to character.
         if (collider != null) {
-            collider.GetComponent<Interactable>()?.InteractNPC();
-            //OnBattle();
+            animator.SetBool("isMoving", false);
+
+            Debug.Log("Donedid");
+
+            if (collider.tag == "NPC") {
+                collider.GetComponent<Interactable>()?.InteractNPC();
+            }
+            if (collider.tag == "Door") {
+                collider.GetComponent<Interactable>()?.InteractDoor();
+            }
+        }
+    }
+
+    // Handles random tall grass squirrel encounters. 
+    private void CheckForEncounters() {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null) {
+            // 10 percent chance to encounter a squirrel.
+            if (UnityEngine.Random.Range(1, 101) <= 10) {
+                OnBattle();
+                Debug.Log("Encountered Squirrel");
+            }
         }
     }
 }
