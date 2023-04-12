@@ -84,12 +84,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Currently unused function.
-    void OnMove(InputValue movementValue) {
+    private void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     }
 
     // Handles NPC interactions.
-    void Interact() {
+    private void Interact() {
         var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
 
@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour {
     // Handles random tall grass squirrel encounters. 
     private void CheckForEncounters() {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null) {
+            Debug.Log("Walking In Grass");
             // 10 percent chance to encounter a squirrel.
             if (UnityEngine.Random.Range(1, 101) <= 10) {
                 OnBattle();
