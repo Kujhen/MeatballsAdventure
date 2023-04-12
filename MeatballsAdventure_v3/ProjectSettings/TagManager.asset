@@ -46,17 +46,26 @@ TagManager:
   - name: Background
     uniqueID: 652295971
     locked: 0
+  - name: Water
+    uniqueID: 2870404067
+    locked: 0
+  - name: TreesBack
+    uniqueID: 1007215437
+    locked: 0
   - name: Buildings
     uniqueID: 188658643
     locked: 0
-  - name: Player
-    uniqueID: 1402018449
+  - name: TallGrass
+    uniqueID: 4164077499
+    locked: 0
+  - name: Trees
+    uniqueID: 2337275689
     locked: 0
   - name: Foreground
     uniqueID: 2150791243
     locked: 0
-  - name: Water
-    uniqueID: 2870404067
+  - name: Player
+    uniqueID: 1402018449
     locked: 0
   - name: UI
     uniqueID: 2807007823

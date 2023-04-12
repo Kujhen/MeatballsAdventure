@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour {
         // Used for NPC interaction.
         if (Input.GetKeyDown(KeyCode.E)) {
             Interact();
-            Debug.Log("Pressed E");
         }
     }
     
@@ -84,12 +83,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Currently unused function.
-    void OnMove(InputValue movementValue) {
+    private void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     }
 
     // Handles NPC interactions.
-    void Interact() {
+    private void Interact() {
         var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
 
@@ -99,12 +98,12 @@ public class PlayerController : MonoBehaviour {
         if (collider != null) {
             animator.SetBool("isMoving", false);
 
-            Debug.Log("Donedid");
-
             if (collider.tag == "NPC") {
+                Debug.Log("Interacting with NPC");
                 collider.GetComponent<Interactable>()?.InteractNPC();
             }
             if (collider.tag == "Door") {
+                Debug.Log("Interacting with Door");
                 collider.GetComponent<Interactable>()?.InteractDoor();
             }
         }
@@ -113,8 +112,9 @@ public class PlayerController : MonoBehaviour {
     // Handles random tall grass squirrel encounters. 
     private void CheckForEncounters() {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null) {
+            Debug.Log("Overlapping Grass");
             // 10 percent chance to encounter a squirrel.
-            if (UnityEngine.Random.Range(1, 101) <= 10) {
+            if (UnityEngine.Random.Range(1, 1001) == 1) {
                 OnBattle();
                 Debug.Log("Encountered Squirrel");
             }
