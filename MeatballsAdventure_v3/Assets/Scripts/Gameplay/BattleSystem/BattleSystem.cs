@@ -28,6 +28,8 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
+    
+
     // Start is called before the first frame update
     public void StartBattle()
     {
@@ -62,8 +64,9 @@ public class BattleSystem : MonoBehaviour
 
         enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = "The attack is successful!";
+       
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         if(isDead)
         {
@@ -118,6 +121,7 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        
         state = BattleState.PLAYERTURN;
         dialogueText.text = "Choose an action:";
     }
@@ -142,7 +146,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN)
             return;
-
+        
         StartCoroutine(PlayerAttack());
     }
 
@@ -150,7 +154,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN)
             return;
-
+        
         StartCoroutine(PlayerHeal());
     }
 
