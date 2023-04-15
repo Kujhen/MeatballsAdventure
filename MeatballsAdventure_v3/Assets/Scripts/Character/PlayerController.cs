@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour {
 
+    
     public LayerMask grassLayer;
     public LayerMask interactableLayer;
 
@@ -26,10 +28,16 @@ public class PlayerController : MonoBehaviour {
     
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
+    //Usb counter 
+    public TextMeshProUGUI usbCounter;
+    private int usbAmount;
+    
+
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        usbAmount = 0;
     }
 
     public void HandleUpdate() {
@@ -59,6 +67,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             Interact();
         }
+        
     }
     
     // Attempt to move in given direction.
@@ -117,7 +126,21 @@ public class PlayerController : MonoBehaviour {
             if (UnityEngine.Random.Range(1, 1001) == 1) {
                 OnBattle();
                 Debug.Log("Encountered Squirrel");
+                
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.CompareTag("Usb"))
+    {
+        Debug.Log("Picked up Usb");
+        Destroy(other.gameObject);
+        usbAmount++;
+        Debug.Log("Usb: " + usbAmount);
+        usbCounter.text = "Usb: " + usbAmount;
+    }
+}
+
 }
