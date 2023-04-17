@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1993,9 +1993,9 @@ TextureImporter:
       5_Classroom_and_library_Black_Shadow_32x32_26: -1764637262
       5_Classroom_and_library_Black_Shadow_32x32_12: 944680653
       5_Classroom_and_library_Black_Shadow_32x32_83: -694971720
-      5_Classroom_and_library_Black_Shadow_32x32_18: 1411593351
       5_Classroom_and_library_Black_Shadow_32x32_13: 1590632788
       5_Classroom_and_library_Black_Shadow_32x32_54: -547140496
+      5_Classroom_and_library_Black_Shadow_32x32_18: 1411593351
       5_Classroom_and_library_Black_Shadow_32x32_33: 833484623
       5_Classroom_and_library_Black_Shadow_32x32_43: 372394931
       5_Classroom_and_library_Black_Shadow_32x32_53: -1788815044
@@ -2058,8 +2058,8 @@ TextureImporter:
       5_Classroom_and_library_Black_Shadow_32x32_52: -1379653452
       5_Classroom_and_library_Black_Shadow_32x32_50: -819375478
       5_Classroom_and_library_Black_Shadow_32x32_23: 1734376978
-      5_Classroom_and_library_Black_Shadow_32x32_73: 1404245950
       5_Classroom_and_library_Black_Shadow_32x32_40: 1875443595
+      5_Classroom_and_library_Black_Shadow_32x32_73: 1404245950
       5_Classroom_and_library_Black_Shadow_32x32_35: -1959407325
       5_Classroom_and_library_Black_Shadow_32x32_14: 1538962569
       5_Classroom_and_library_Black_Shadow_32x32_46: 972875131

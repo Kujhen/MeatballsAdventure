@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -5102,10 +5102,10 @@ TextureImporter:
       Room_Builder_borders_32x32_12: -626467840
       Room_Builder_borders_32x32_77: 1633561832
       Room_Builder_borders_32x32_94: -1004241505
-      Room_Builder_borders_32x32_116: -718168503
       Room_Builder_borders_32x32_200: 1944560298
-      Room_Builder_borders_32x32_128: 1817229103
+      Room_Builder_borders_32x32_116: -718168503
       Room_Builder_borders_32x32_176: -488843005
+      Room_Builder_borders_32x32_128: 1817229103
       Room_Builder_borders_32x32_2: 1691718917
       Room_Builder_borders_32x32_226: 1503099449
       Room_Builder_borders_32x32_171: -383992813
@@ -5145,9 +5145,10 @@ TextureImporter:
       Room_Builder_borders_32x32_155: 1865625153
       Room_Builder_borders_32x32_78: 2091980896
       Room_Builder_borders_32x32_105: -1623429458
-      Room_Builder_borders_32x32_57: -1377179605
-      Room_Builder_borders_32x32_75: 1473167520
       Room_Builder_borders_32x32_210: 652155331
+      Room_Builder_borders_32x32_228: -1743244866
+      Room_Builder_borders_32x32_75: 1473167520
+      Room_Builder_borders_32x32_57: -1377179605
       Room_Builder_borders_32x32_168: 435960588
       Room_Builder_borders_32x32_109: -1862081840
       Room_Builder_borders_32x32_182: -884374992
@@ -5157,7 +5158,6 @@ TextureImporter:
       Room_Builder_borders_32x32_45: 1025274962
       Room_Builder_borders_32x32_21: -1828950485
       Room_Builder_borders_32x32_222: -1108049072
-      Room_Builder_borders_32x32_228: -1743244866
       Room_Builder_borders_32x32_53: -242159048
       Room_Builder_borders_32x32_101: 571260550
       Room_Builder_borders_32x32_132: 806830457
@@ -5181,8 +5181,8 @@ TextureImporter:
       Room_Builder_borders_32x32_87: -1207809649
       Room_Builder_borders_32x32_157: 724953070
       Room_Builder_borders_32x32_10: 1081270230
-      Room_Builder_borders_32x32_185: -953925436
       Room_Builder_borders_32x32_224: 1138054942
+      Room_Builder_borders_32x32_185: -953925436
       Room_Builder_borders_32x32_66: 60227436
       Room_Builder_borders_32x32_191: 1985998281
       Room_Builder_borders_32x32_16: -1454131315
