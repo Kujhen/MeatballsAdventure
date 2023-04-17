@@ -54,14 +54,15 @@ public class PlayerController : MonoBehaviour {
                 success = TryMove(new Vector2(0, movementInput.y));
             }
 
+            // Only check for encounters whenever the player moves.
+            CheckForEncounters();
+
             animator.SetFloat("moveX", movementInput.x);
             animator.SetFloat("moveY", movementInput.y);
             animator.SetBool("isMoving", success);
         } else {
             animator.SetBool("isMoving", false);
         }
-
-        CheckForEncounters();
 
         // Used for NPC interaction.
         if (Input.GetKeyDown(KeyCode.E)) {
@@ -131,16 +132,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.CompareTag("Usb"))
-    {
-        Debug.Log("Picked up Usb");
-        Destroy(other.gameObject);
-        usbAmount++;
-        Debug.Log("Usb: " + usbAmount);
-        usbCounter.text = "Usb: " + usbAmount;
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Usb")) {
+            Debug.Log("Picked up Usb");
+            Destroy(other.gameObject);
+            usbAmount++;
+            Debug.Log("Usb: " + usbAmount);
+            usbCounter.text = "Usb: " + usbAmount;
+        }
     }
-}
 
 }
