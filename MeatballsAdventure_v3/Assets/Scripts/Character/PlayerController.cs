@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour {
             Destroy(other.gameObject);
             usbAmount++;
             Debug.Log("Usb: " + usbAmount);
-            usbCounter.text = "Usb: " + usbAmount;
+            usbCounter.text = "Usb: " + usbAmount + "/7";
         }
     }
 
