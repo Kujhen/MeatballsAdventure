@@ -32,12 +32,14 @@ public class PlayerController : MonoBehaviour {
     public TextMeshProUGUI usbCounter;
     private int usbAmount;
     
+    public GameObject gameObject;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         usbAmount = 0;
+        gameObject.SetActive(false);
     }
 
     public void HandleUpdate() {
@@ -127,7 +129,6 @@ public class PlayerController : MonoBehaviour {
             if (UnityEngine.Random.Range(1, 1001) == 1) {
                 OnBattle();
                 Debug.Log("Encountered Squirrel");
-                
             }
         }
     }
@@ -139,6 +140,17 @@ public class PlayerController : MonoBehaviour {
             usbAmount++;
             Debug.Log("Usb: " + usbAmount);
             usbCounter.text = "Usb: " + usbAmount + "/7";
+        }
+        if (other.CompareTag("Spawns") || other.CompareTag("NPC") || other.CompareTag("Sign")) {
+            Debug.Log("Near Door");
+            gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Spawns") || other.CompareTag("NPC") || other.CompareTag("Sign")) {
+            Debug.Log("Away from Door");
+            gameObject.SetActive(false);
         }
     }
 

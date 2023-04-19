@@ -7,6 +7,8 @@ TagManager:
   - Door
   - NPC
   - Usb
+  - Spawns
+  - Sign
   layers:
   - Default
   - TransparentFX
@@ -73,4 +75,7 @@ TagManager:
     locked: 0
   - name: Roof
     uniqueID: 2807007823
+    locked: 0
+  - name: E
+    uniqueID: 3334217259
     locked: 0
