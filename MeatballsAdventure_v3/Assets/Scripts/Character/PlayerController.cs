@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -30,7 +31,8 @@ public class PlayerController : MonoBehaviour {
 
     //Usb counter 
     public TextMeshProUGUI usbCounter;
-    private int usbAmount;
+    public int usbAmount;
+    public GameObject WinScreen;
     
     public GameObject gameObject;
 
@@ -40,6 +42,8 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
         usbAmount = 0;
         gameObject.SetActive(false);
+        WinScreen.SetActive(false);
+       
     }
 
     public void HandleUpdate() {
@@ -71,6 +75,12 @@ public class PlayerController : MonoBehaviour {
             Interact();
         }
         
+
+        //Used to activate WinScreen
+        if(usbAmount == 7){
+        
+        WinScreen.SetActive(true);
+        } 
     }
     
     // Attempt to move in given direction.
@@ -153,5 +163,7 @@ public class PlayerController : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
+
+    
 
 }

@@ -10,6 +10,9 @@ scopes = {
 	"last_search.DA949528" = "tilemap"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
+	"last_search.10697386" = "WinScreen"
+	"OpenInspectorPreview.10697386" = "0"
+	"currentGroup.10697386" = "all"
 }
 providers = {
 	adb = {
