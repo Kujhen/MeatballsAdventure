@@ -34,14 +34,16 @@ public class PlayerController : MonoBehaviour {
     public int usbAmount;
     public GameObject WinScreen;
     
-    public GameObject gameObject;
+    public GameObject pressE;
+
+    public GameObject dialogueUp;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         usbAmount = 0;
-        gameObject.SetActive(false);
+        pressE.SetActive(false);
         WinScreen.SetActive(false);
        
     }
@@ -151,19 +153,16 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("Usb: " + usbAmount);
             usbCounter.text = "Usb: " + usbAmount + "/7";
         }
-        if (other.CompareTag("Spawns") || other.CompareTag("NPC") || other.CompareTag("Sign")) {
+        if (other.CompareTag("Spawns") || other.CompareTag("NPC") || other.CompareTag("Sign") && dialogueUp.activeSelf) {
             Debug.Log("Near Door");
-            gameObject.SetActive(true);
+            pressE.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Spawns") || other.CompareTag("NPC") || other.CompareTag("Sign")) {
             Debug.Log("Away from Door");
-            gameObject.SetActive(false);
+            pressE.SetActive(false);
         }
     }
-
-    
-
 }
